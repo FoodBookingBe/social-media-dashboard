@@ -1,0 +1,39 @@
+{
+  "name": "super-slim-ai-marketing-dashboard",
+  "version": "1.0.0",
+  "description": "Autonoom AI Marketing Dashboard met lokale AI modellen en workflow automatisering",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd frontend && next dev",
+    "build": "cd frontend && next build",
+    "start": "cd frontend && next start",
+    "lint": "cd frontend && next lint",
+    "db:generate": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > types/supabase.ts",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "supabase": "^1.127.0"
+  },
+  "keywords": [
+    "ai",
+    "marketing",
+    "automation",
+    "dashboard",
+    "social-media",
+    "machine-learning"
+  ],
+  "author": "AI Marketing Team",
+  "license": "MIT"
+}
