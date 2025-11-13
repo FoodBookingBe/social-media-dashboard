@@ -1,0 +1,16 @@
+# ESLint ignore file
+# Ignore build and dependency directories
+node_modules
+.next
+dist
+build
+out
+
+# Ignore generated files
+*.generated.*
+.eslintrc.json
+next.config.js
+
+# Temporary files
+*.tmp
+*.temp
