@@ -1,0 +1,16 @@
+# Ignore local env files
+.env.local
+.env.*
+
+# Ignore build artifacts
+.next/
+out/
+
+# Node modules
+node_modules/
+
+# Misc
+coverage/
+.DS_Store
+.vscode/
+.idea/
