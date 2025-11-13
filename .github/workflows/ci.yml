@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, brasserie-de-polder-ai ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, brasserie-de-polder-ai ]
 
 jobs:
   test-frontend:
@@ -49,8 +49,29 @@ jobs:
   deploy:
     needs: [test-frontend, test-backend]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/brasserie-de-polder-ai'
 
     steps:
-    - name: Deploy to production
-      run: echo "Deploy to production here"
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build (frontend)
+      run: npm run build
+
+    - name: Deploy to Vercel
+      # Uses the community Vercel action which deploys the repository to Vercel
+      # Requires these GitHub Secrets to be set: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+      uses: amondnet/vercel-action@v20
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+        working-directory: 'frontend'
