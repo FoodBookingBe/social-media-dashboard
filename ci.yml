@@ -59,3 +59,6 @@ jobs:
         vercel-args: '--prod'
         working-directory: 'frontend'
 ```
+
+4. Commit message: `ci: add GitHub Actions CI workflow`
+5. Click **Commit directly to the main branch**
