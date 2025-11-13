@@ -15,8 +15,6 @@ const nextConfig = {
       },
     ];
   },
-  // Configure Next.js to work from frontend directory
-  distDir: '../.next',
 };
 
 module.exports = nextConfig;
